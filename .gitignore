@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# vim swp files
+*.swp
+
+# nb-files
+.ipynb_checkpoints/

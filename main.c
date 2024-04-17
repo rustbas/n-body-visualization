@@ -28,7 +28,7 @@ int main() {
 
     InitWindow(WIDTH, HEIGHT, "Main Windows");
 
-    SetTargetFPS(20);
+    SetTargetFPS(60);
 
     int i = 1;
 
@@ -47,11 +47,19 @@ int main() {
         float x1 = atof(getfield(tmp, 2));
         tmp = strdup(line);
         float y1 = atof(getfield(tmp, 4));
-
-        printf("%f\t%f\n", x1, SHIFTX*x1);
+        tmp = strdup(line);
+        float x2 = atof(getfield(tmp, 6));
+        tmp = strdup(line);
+        float y2 = atof(getfield(tmp, 8));
+        tmp = strdup(line);
+        float x3 = atof(getfield(tmp, 10));
+        tmp = strdup(line);
+        float y3 = atof(getfield(tmp, 12));
 
         //DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
-        DrawCircle((int)(SHIFTX*x1)+SHIFTX, (int)(SHIFTY*y1)+SHIFTY, 10.0f,GREEN);
+        DrawCircle((int)(SHIFTX*x1)+SHIFTX, (int)(SHIFTY*y1)+SHIFTY, 3.0f,GREEN);
+        DrawCircle((int)(SHIFTX*x2)+SHIFTX, (int)(SHIFTY*y2)+SHIFTY, 3.0f,RED);
+        DrawCircle((int)(SHIFTX*x3)+SHIFTX, (int)(SHIFTY*y3)+SHIFTY, 3.0f,BLUE);
 
 
         EndDrawing();

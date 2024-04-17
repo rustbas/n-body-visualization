@@ -4,11 +4,13 @@
 #include <string.h>
 
 // CONSTS
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 800
+#define HEIGHT 600
 
 #define SHIFTX (WIDTH / 2)
 #define SHIFTY (HEIGHT / 2)
+
+#define RADIUS 5.0f
 
 const char* getfield(char* line, int num)
 {
@@ -57,13 +59,15 @@ int main() {
         float y3 = atof(getfield(tmp, 12));
 
         //DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
-        DrawCircle((int)(SHIFTX*x1)+SHIFTX, (int)(SHIFTY*y1)+SHIFTY, 3.0f,GREEN);
-        DrawCircle((int)(SHIFTX*x2)+SHIFTX, (int)(SHIFTY*y2)+SHIFTY, 3.0f,RED);
-        DrawCircle((int)(SHIFTX*x3)+SHIFTX, (int)(SHIFTY*y3)+SHIFTY, 3.0f,BLUE);
+        DrawCircle((int)(SHIFTX*x1)+SHIFTX, (int)(SHIFTY*y1)+SHIFTY, RADIUS, GREEN);
+        DrawCircle((int)(SHIFTX*x2)+SHIFTX, (int)(SHIFTY*y2)+SHIFTY, RADIUS, RED);
+        DrawCircle((int)(SHIFTX*x3)+SHIFTX, (int)(SHIFTY*y3)+SHIFTY, RADIUS, BLUE);
 
 
         EndDrawing();
     }
+
+    fclose(result);
 
     CloseWindow();                // Close window and OpenGL context
 }

@@ -34,7 +34,7 @@ int main() {
 
     char line[1024];
     while (!WindowShouldClose() && fgets(line, 1024, result)) {
-        BeginDrawing();
+        //BeginDrawing();
         ClearBackground(BLACK);
         //while (fgets(line, 1024, result)) {
             //char* tmp = strdup(line);
@@ -48,10 +48,10 @@ int main() {
         tmp = strdup(line);
         float y1 = atof(getfield(tmp, 4));
 
-        printf("%f\t%f\n", x1, y1);
+        printf("%f\t%f\n", x1, SHIFTX*x1);
 
-        DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
-        DrawCircle(x1, y1, 10.0f,GREEN);
+        //DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
+        DrawCircle((int)(SHIFTX*x1)+SHIFTX, (int)(SHIFTY*y1)+SHIFTY, 10.0f,GREEN);
 
 
         EndDrawing();

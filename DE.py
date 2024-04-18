@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 from scipy.integrate import odeint
 from numpy import sin, cos, arctan
@@ -11,25 +5,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 
-
-# In[2]:
-
-
-import warnings
-warnings.filterwarnings("ignore", "is_categorical_dtype")
-warnings.filterwarnings("ignore", "use_inf_as_na")
-
-
 # # Начальные условия
 
-# In[3]:
-
-
-N = 3
-
-
-# In[4]:
-
+N = 2
 
 m = [1 for _ in range(N)]
 # m[4] = 10
@@ -47,17 +25,13 @@ X0 = [
     1 # Vy_2
 ]
 
-X0 = [np.random.uniform(-2,2) for _ in range(N*4)]
 
-t = np.linspace(0,250,1001)
+t = np.linspace(0,300,2501)
 
 
 # # Решение
 
 # ## Функция системы
-
-# In[5]:
-
 
 def DE(X, t):
     dxdt = [0.0 for _ in range(N*4)] 
@@ -81,40 +55,33 @@ def DE(X, t):
 
 # ## Интегрирование
 
-# In[6]:
 
 
 Vcosm = np.sqrt(G*sum(m)/9)
-
-
-# In[7]:
-
 
 X0 = [
     -2, # x_1
     0, # Vx_1
     0, # y_1
-    Vcosm, # Vy_1
+    0.2, # Vy_1
     
-    0, # x_2
-    Vcosm, # Vx_2
-    2, # y_2
-    0, # Vy_2
+    2, # x_2
+    0, # Vx_2
+    0, # y_2
+    -0.2, # Vy_2
     
-    2, # x_Vcosm
-    0, # Vx_Vcosm
-    0, # y_Vcosm
-    -Vcosm, # Vy_Vcosm
+    #2, # x_Vcosm
+    #0, # Vx_Vcosm
+    #0, # y_Vcosm
+    #0, # Vy_Vcosm
     
     #0, # x_4
-    #-Vcosm, # Vx_4
+    #0, # Vx_4
     #-2, # y_4
     #0, # Vy_4
 ]
 
-
-# In[8]:
-
+#X0 = [np.random.uniform(-100,100) for _ in range(N*4)]
 
 res = odeint(DE, X0, t)
 dists = np.zeros((len(t), N))
@@ -126,22 +93,6 @@ max_dist = dists.max(axis=None)
 for i in range(N):
     res[:, i*4] /= np.sqrt(max_dist)
     res[:, i*4+2] /= np.sqrt(max_dist)
-
-
-# In[9]:
-
-
-fig, ax = plt.subplots(1,1)
-ax.grid()
-
-for i in range(0, N*4, 4):
-    sns.lineplot(ax=ax, x=res[:,i], y=res[:,i+2], sort=False);
-
-plt.tight_layout()
-
-
-# In[10]:
-
 
 df = pd.DataFrame()
 df["t"] = t

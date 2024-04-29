@@ -1,5 +1,5 @@
 all:
-	gcc main.c -o result.o -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+	gcc main.c -g3 -o result.o -lraylib -lGL -lm -L ./c-numerical-methods/obj -lrunge-kutta
 
 clean:
 	rm result.o

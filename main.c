@@ -72,7 +72,7 @@ int main() {
 
   SetTargetFPS(FPS);
 
-  int j;
+  int j, k;
 
   char line[1024];
   while (!WindowShouldClose() && !IsKeyPressed(KEY_Q) && i < N) {
@@ -81,6 +81,11 @@ int main() {
     // DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
 
     for (j = 0; j < Nbodies * 4; j += 4) {
+      for (k = 0; k < i; k++) {
+        int cx = (movement[k][j] * SHIFTX) + SHIFTX;
+        int cy = (movement[k][j + 2] * SHIFTY) + SHIFTY;
+        DrawPixel(cx, cy, colors[j / 4]);
+      }
       int cx = (movement[i][j] * SHIFTX) + SHIFTX;
       int cy = (movement[i][j + 2] * SHIFTY) + SHIFTY;
       DrawCircle(cx, cy, RADIUS, colors[j / 4]);

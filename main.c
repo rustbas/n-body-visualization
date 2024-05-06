@@ -18,7 +18,7 @@
 #define SHIFTY (HEIGHT / 2)
 
 #define RADIUS 5.0f
-#define FPS 30
+#define FPS 60
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"
@@ -45,7 +45,7 @@ float **normalize(float **X, unsigned COLS, unsigned ROWS) {
   return X;
 };
 
-Color colors[] = {RED, BLUE, GREEN};
+Color colors[] = {RED, BLUE, GREEN, GOLD};
 
 int main() {
   float *t = malloc(sizeof(float) * N);
@@ -56,7 +56,7 @@ int main() {
   }
 
   float **movement =
-      runge_kutta(Nbodies * 4, N, t, dxdt, X0); // TODO: free `movement`
+      euler(Nbodies * 4, N, t, dxdt, X0); // TODO: free `movement`
   movement = normalize(movement, Nbodies * 4, N);
 
   for (int i = 0; i < N; i++) {

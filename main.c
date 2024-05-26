@@ -55,8 +55,7 @@ int main() {
     t[i] = t[i - 1] + dt;
   }
 
-  float **movement =
-      euler(Nbodies * 4, N, t, dxdt, X0); // TODO: free `movement`
+  float **movement = euler(Nbodies * 4, N, t, dxdt, X0);
   movement = normalize(movement, Nbodies * 4, N);
 
   for (int i = 0; i < N; i++) {

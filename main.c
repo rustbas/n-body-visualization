@@ -24,7 +24,6 @@
 #include "initial_conditions.h"
 
 float **normalize(float **X, unsigned COLS, unsigned ROWS) {
-
   int i, j;
   float max = 0.0f;
 

@@ -15,7 +15,7 @@
 
 #define T0 0.0f
 #define T1 1000.0f
-#define N 500
+#define N 5000
 #define Nbodies 2
 // #define M (Nbodies * 4)
 
@@ -28,14 +28,14 @@ float m[] = {1.0, 1.0};
 //  float m[] = {7.34e22f};
 
 float X0[] = {
-    -5.0f, // x_1
-    0.0f,  // Vx_1
-    0.0f,  // y_1
-    0.23f, // Vy_1
-    5.0f,  // x_2
-    0.0f,  // Vx_2
-    0.0f,  // y_2
-    -0.23f // Vy_2
+    -15.0f, // x_1
+    0.0f,   // Vx_1
+    0.0f,   // y_1
+    0.13f,  // Vy_1
+    15.0f,  // x_2
+    0.0f,   // Vx_2
+    0.0f,   // y_2
+    -0.13f  // Vy_2
 };
 
 float *dxdt(float *X, float t, unsigned M) {

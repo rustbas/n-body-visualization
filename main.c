@@ -11,8 +11,8 @@
 #include "c-numerical-methods/solvers/simple.h"
 
 // CONSTS
-#define WIDTH 800
-#define HEIGHT 600
+#define WIDTH 1024
+#define HEIGHT 720
 
 #define SHIFTX (WIDTH / 2)
 #define SHIFTY (HEIGHT / 2)
@@ -23,12 +23,12 @@
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"
 
-float **normalize(float **X, unsigned COLS, unsigned ROWS) {
+float **normalize(float **X, unsigned cols, unsigned rows) {
   int i, j;
-  float max = 0.0f;
+  float max = -10.0;
 
-  for (i = 0; i < ROWS; i++) {
-    for (j = 0; j < COLS; j += 4) {
+  for (i = 0; i < rows; i++) {
+    for (j = 0; j < cols; j += 4) {
       float norm = powf(X[i][j], 2) + powf(X[i][j + 2], 2);
       if (max < norm) {
         max = norm;
@@ -36,8 +36,8 @@ float **normalize(float **X, unsigned COLS, unsigned ROWS) {
     }
   }
 
-  for (i = 0; i < ROWS; i++) {
-    for (j = 0; j < COLS; j += 2) {
+  for (i = 0; i < rows; i++) {
+    for (j = 0; j < cols; j += 2) {
       X[i][j] /= sqrtf(max);
     }
   }

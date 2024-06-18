@@ -4,9 +4,6 @@
 #include <math.h>
 #endif
 
-#define SOLVER_RUNGE_KUTTA_IMPLEMENTATION
-#include "c-numerical-methods/solvers/runge-kutta.h"
-
 #define SOLVER_EULER_IMPLEMENTATION
 #include "c-numerical-methods/solvers/simple.h"
 
@@ -18,7 +15,7 @@
 #define SHIFTY (HEIGHT / 2)
 
 #define RADIUS 5.0f
-#define FPS 60
+#define FPS 120
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"

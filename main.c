@@ -15,7 +15,7 @@
 #define SHIFTY (HEIGHT / 2)
 
 #define RADIUS 5.0f
-#define FPS 120
+#define FPS 60
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"
@@ -76,10 +76,13 @@ int main() {
     // DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
 
     for (j = 0; j < Nbodies * 4; j += 4) {
-      for (k = 0; k < i; k++) {
-        int cx = (movement[k][j] * SHIFTX) + SHIFTX;
-        int cy = (movement[k][j + 2] * SHIFTY) + SHIFTY;
-        DrawPixel(cx, cy, colors[j / 4]);
+      for (k = 1; k < i; k++) {
+        int cx_begin = (movement[k - 1][j] * SHIFTX) + SHIFTX;
+        int cy_begin = (movement[k - 1][j + 2] * SHIFTY) + SHIFTY;
+        int cx_end = (movement[k][j] * SHIFTX) + SHIFTX;
+        int cy_end = (movement[k][j + 2] * SHIFTY) + SHIFTY;
+        DrawLine(cx_begin, cy_begin, cx_end, cy_end, colors[j / 4]);
+        // DrawPixel(cx, cy, colors[j / 4]);
       }
       int cx = (movement[i][j] * SHIFTX) + SHIFTX;
       int cy = (movement[i][j + 2] * SHIFTY) + SHIFTY;

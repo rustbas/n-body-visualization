@@ -69,7 +69,6 @@ int main() {
 
   int j, k;
 
-  char line[1024];
   while (!WindowShouldClose() && !IsKeyPressed(KEY_Q) && i < N) {
     BeginDrawing();
     ClearBackground(BLACK);

@@ -16,7 +16,9 @@
 #define SHIFTY (HEIGHT / 2)
 
 #define RADIUS 5.0f
-#define FPS 60
+#define DURATION 25
+#define FPS ((T1 - T0) / DURATION)//60
+#define N 600//FPS*DURATION
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"

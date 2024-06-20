@@ -43,6 +43,18 @@ float **normalize(float **X, unsigned cols, unsigned rows) {
 
 Color colors[] = {RED, BLUE, GREEN, GOLD};
 
+void drawTrace(int i, int j, float **movement) {
+  for (size_t k = 1; k < i; k++) {
+
+    int cx_begin = (movement[k - 1][j] * SHIFTX) + SHIFTX;
+    int cy_begin = (movement[k - 1][j + 2] * SHIFTY) + SHIFTY;
+    int cx_end = (movement[k][j] * SHIFTX) + SHIFTX;
+    int cy_end = (movement[k][j + 2] * SHIFTY) + SHIFTY;
+    DrawLine(cx_begin, cy_begin, cx_end, cy_end, colors[j / 4]);
+    // DrawPixel(cx, cy, colors[j / 4]);
+  }
+}
+
 int main() {
   float *t = malloc(sizeof(float) * N);
   float dt = (T1 - T0) / N;
@@ -75,14 +87,7 @@ int main() {
     // DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
 
     for (j = 0; j < Nbodies * 4; j += 4) {
-      for (k = 1; k < i; k++) {
-        int cx_begin = (movement[k - 1][j] * SHIFTX) + SHIFTX;
-        int cy_begin = (movement[k - 1][j + 2] * SHIFTY) + SHIFTY;
-        int cx_end = (movement[k][j] * SHIFTX) + SHIFTX;
-        int cy_end = (movement[k][j + 2] * SHIFTY) + SHIFTY;
-        DrawLine(cx_begin, cy_begin, cx_end, cy_end, colors[j / 4]);
-        // DrawPixel(cx, cy, colors[j / 4]);
-      }
+      drawTrace(i, j, movement);
       int cx = (movement[i][j] * SHIFTX) + SHIFTX;
       int cy = (movement[i][j + 2] * SHIFTY) + SHIFTY;
       DrawCircle(cx, cy, RADIUS, colors[j / 4]);

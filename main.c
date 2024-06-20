@@ -20,6 +20,8 @@
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"
 
+#include "ffmpeg.h"
+
 float **normalize(float **X, unsigned cols, unsigned rows) {
   int i, j;
   float max = -10.0;

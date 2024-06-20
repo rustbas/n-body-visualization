@@ -14,8 +14,7 @@
 #endif
 
 #define T0 0.0f
-#define T1 1000.0f
-#define N 500
+#define T1 2500.0f
 #define Nbodies 2
 // #define M (Nbodies * 4)
 
@@ -23,7 +22,7 @@
 
 #ifdef NBODY_IMPLEMENTATION
 // Initial conditions
-float m[] = {1.0, 1.0};
+float m[] = {1.0, 2.0};
 // float m[] = {6e24f, 7.34e22f};
 //  float m[] = {7.34e22f};
 

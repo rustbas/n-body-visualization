@@ -56,3 +56,6 @@ dkms.conf
 
 # nb-files
 .ipynb_checkpoints/
+
+# mp4
+*.mp4

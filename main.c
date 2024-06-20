@@ -99,5 +99,7 @@ int main() {
     movement[i] = NULL;
   }
   free(movement);
+  movement = NULL;
   free(t);
+  t = NULL;
 }

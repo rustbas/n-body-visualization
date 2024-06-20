@@ -93,11 +93,7 @@ int main() {
   while (!WindowShouldClose() && !IsKeyPressed(KEY_Q) && i < N) {
     BeginDrawing();
     ClearBackground(BLACK);
-    // DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
-
-    drawBodies(i, movement);
-
-    i += 1;
+    drawBodies(i++, movement);
     EndDrawing();
   }
 

@@ -55,6 +55,15 @@ void drawTrace(int i, int j, float **movement) {
   }
 }
 
+void drawBodies(int i, float **movement) {
+  for (size_t j = 0; j < Nbodies * 4; j += 4) {
+    drawTrace(i, j, movement);
+    int cx = (movement[i][j] * SHIFTX) + SHIFTX;
+    int cy = (movement[i][j + 2] * SHIFTY) + SHIFTY;
+    DrawCircle(cx, cy, RADIUS, colors[j / 4]);
+  }
+}
+
 int main() {
   float *t = malloc(sizeof(float) * N);
   float dt = (T1 - T0) / N;
@@ -86,12 +95,7 @@ int main() {
     ClearBackground(BLACK);
     // DrawCircle((i+=4)%WIDTH,HEIGHT/2,10,RED);
 
-    for (j = 0; j < Nbodies * 4; j += 4) {
-      drawTrace(i, j, movement);
-      int cx = (movement[i][j] * SHIFTX) + SHIFTX;
-      int cy = (movement[i][j + 2] * SHIFTY) + SHIFTY;
-      DrawCircle(cx, cy, RADIUS, colors[j / 4]);
-    }
+    drawBodies(i, movement);
 
     i += 1;
     EndDrawing();

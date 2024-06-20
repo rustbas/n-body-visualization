@@ -23,7 +23,7 @@
 
 #ifdef NBODY_IMPLEMENTATION
 // Initial conditions
-float m[] = {2.0, 1.0};
+float m[] = {1.0, 1.0};
 // float m[] = {6e24f, 7.34e22f};
 //  float m[] = {7.34e22f};
 

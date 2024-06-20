@@ -83,7 +83,6 @@ int main() {
   }
 
   int i = 1;
-#if 1
   InitWindow(WIDTH, HEIGHT, "Main Windows");
 
   SetTargetFPS(FPS);
@@ -98,7 +97,7 @@ int main() {
   }
 
   CloseWindow(); // Close window and OpenGL context
-#endif
+
   for (i = 0; i < N; i += 4) {
     free(movement[i]);
     movement[i] = NULL;

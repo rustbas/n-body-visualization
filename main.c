@@ -55,7 +55,7 @@ void drawTrace(int i, int j, float **movement) {
   }
 }
 
-void drawBodies(int i, float **movement) {
+void DrawBodies(int i, float **movement) {
   for (size_t j = 0; j < Nbodies * 4; j += 4) {
     drawTrace(i, j, movement);
     int cx = (movement[i][j] * SHIFTX) + SHIFTX;
@@ -93,7 +93,7 @@ int main() {
   while (!WindowShouldClose() && !IsKeyPressed(KEY_Q) && i < N) {
     BeginDrawing();
     ClearBackground(BLACK);
-    drawBodies(i++, movement);
+    DrawBodies(i++, movement);
     EndDrawing();
   }
 

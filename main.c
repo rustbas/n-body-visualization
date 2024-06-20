@@ -18,7 +18,7 @@
 #define RADIUS 5.0f
 #define DURATION 25
 #define FPS ((T1 - T0) / DURATION)//60
-#define N 600//FPS*DURATION
+#define N 600 //FPS*DURATION
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"
@@ -46,6 +46,17 @@ float **normalize(float **X, unsigned cols, unsigned rows) {
   return X;
 };
 
+float* createTimeArray(size_t size){
+  float *t = malloc(sizeof(float) * size);
+  float dt = (T1 - T0) / size;
+  t[0] = T0;
+  for (int i = 1; i < size; i++) {
+    t[i] = t[i - 1] + dt;
+  }
+
+  return t;
+}
+
 Color colors[] = {RED, BLUE, GREEN, GOLD};
 
 void drawTrace(int i, int j, float **movement) {
@@ -72,12 +83,7 @@ void DrawBodies(int i, float **movement) {
 int main() {
   FFMPEG *ffmpeg = ffmpeg_start_rendering(WIDTH, HEIGHT, FPS);
 
-  float *t = malloc(sizeof(float) * N);
-  float dt = (T1 - T0) / N;
-  t[0] = T0;
-  for (int i = 1; i < N; i++) {
-    t[i] = t[i - 1] + dt;
-  }
+  float *t = createTimeArray(N);
 
   float **movement = euler(Nbodies * 4, N, t, dxdt, X0);
   movement = normalize(movement, Nbodies * 4, N);

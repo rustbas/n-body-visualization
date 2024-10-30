@@ -17,8 +17,8 @@
 
 #define RADIUS 5.0f
 #define DURATION 25
-#define FPS ((T1 - T0) / DURATION)//60
-#define N 600 //FPS*DURATION
+#define FPS ((T1 - T0) / DURATION) // 60
+#define N 1000                     // FPS*DURATION
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"
@@ -46,7 +46,7 @@ float **normalize(float **X, unsigned cols, unsigned rows) {
   return X;
 };
 
-float* createTimeArray(size_t size){
+float *createTimeArray(size_t size) {
   float *t = malloc(sizeof(float) * size);
   float dt = (T1 - T0) / size;
   t[0] = T0;

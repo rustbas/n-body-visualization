@@ -14,7 +14,7 @@
 #endif
 
 #define T0 0.0f
-#define T1 2500.0f
+#define T1 5000.0f
 #define Nbodies 2
 // #define M (Nbodies * 4)
 

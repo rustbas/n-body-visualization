@@ -1,0 +1,3 @@
+[submodule "c-numerical-methods"]
+	path = c-numerical-methods
+	url = git@github.com:rustbas/c-numerical-methods.git

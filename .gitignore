@@ -53,3 +53,6 @@ dkms.conf
 
 # ipynb
 .ipynb_checkpoints/
+
+# mp4
+*.mp4

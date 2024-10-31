@@ -17,7 +17,7 @@
 #define SHIFTY (HEIGHT / 2)
 
 #define RADIUS 5.0f
-#define DURATION 25
+#define DURATION 15
 
 #define FPS 60
 #define N (FPS * DURATION)

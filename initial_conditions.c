@@ -20,7 +20,6 @@
 
 #define G 1.0f // 6.67e-11
 
-#ifdef NBODY_IMPLEMENTATION
 // Initial conditions
 float m[] = {1.0, 2.0};
 // float m[] = {6e24f, 7.34e22f};
@@ -70,4 +69,3 @@ float *dxdt(float *X, float t, unsigned M) {
 
   return dx;
 }
-#endif

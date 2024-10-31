@@ -1,5 +1,4 @@
-// #include <raylib.h>
-#include "../raylib-5.0_linux_amd64/include/raylib.h"
+#include <raylib.h>
 
 #ifndef MATH_H
 #define MATH_H

@@ -18,8 +18,9 @@
 
 #define RADIUS 5.0f
 #define DURATION 25
-#define FPS ((T1 - T0) / DURATION) // 60
-#define N 1000                     // FPS*DURATION
+
+#define FPS 60
+#define N (FPS * DURATION)
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"

@@ -22,8 +22,7 @@
 #define FPS 60
 #define N (FPS * DURATION)
 
-#define NBODY_IMPLEMENTATION
-#include "initial_conditions.h"
+#include "initial_conditions.c"
 
 float **normalize(float **X, unsigned cols, unsigned rows) {
   int i, j;

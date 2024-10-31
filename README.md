@@ -2,8 +2,12 @@
 
 Visualization n-body problem using raylib. For Educational Purposes.
 
-# TODO
+# Requirements
 
-1. [ ] Fix Runge-Kutta solver. One body fly to the left?
-2. [ ] Clean up initial state. Add default initial condition.
-3. [ ] Clean up includes.
+- `OpenGL`
+- `GCC`
+
+# How to
+
+1) Download raysan/raylib5 in directory above
+2) Run `./build.sh`

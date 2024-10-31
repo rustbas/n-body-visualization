@@ -1,4 +1,5 @@
-#include <raylib.h>
+// #include <raylib.h>
+#include "../raylib-5.0_linux_amd64/include/raylib.h"
 
 #ifndef MATH_H
 #define MATH_H
@@ -22,8 +23,6 @@
 
 #define NBODY_IMPLEMENTATION
 #include "initial_conditions.h"
-
-#include "ffmpeg.h"
 
 float **normalize(float **X, unsigned cols, unsigned rows) {
   int i, j;
@@ -81,8 +80,6 @@ void DrawBodies(int i, float **movement) {
 }
 
 int main() {
-  FFMPEG *ffmpeg = ffmpeg_start_rendering(WIDTH, HEIGHT, FPS);
-
   float *t = createTimeArray(N);
 
   float **movement = euler(Nbodies * 4, N, t, dxdt, X0);
@@ -95,32 +92,22 @@ int main() {
     printf("\n");
   }
 
-  InitWindow(WIDTH, HEIGHT, "Main Windows");
+  InitWindow(WIDTH, HEIGHT, "N-body visualization");
   SetTargetFPS(FPS);
-  RenderTexture2D screen = LoadRenderTexture(WIDTH, HEIGHT);
 
   int j, k;
 
   for (size_t i = 1; !WindowShouldClose() && !IsKeyPressed(KEY_Q) && i < N;
        i++) {
     BeginDrawing();
-    BeginTextureMode(screen);
-    ClearBackground(BLACK);
-    DrawBodies(i, movement);
-    EndTextureMode();
-
-    ClearBackground(BLACK);
-    DrawTexture(screen.texture, 0, 0, BLACK);
+    {
+      ClearBackground(BLACK);
+      DrawBodies(i, movement);
+    }
     EndDrawing();
-
-    Image image = LoadImageFromTexture(screen.texture);
-    ffmpeg_send_frame_flipped(ffmpeg, image.data, WIDTH, HEIGHT);
-    UnloadImage(image);
   }
 
-  UnloadRenderTexture(screen);
-  CloseWindow(); // Close window and OpenGL context
-  ffmpeg_end_rendering(ffmpeg);
+  CloseWindow();
 
   for (size_t i = 0; i < N; i += 4) {
     free(movement[i]);
